@@ -1,25 +1,22 @@
-const Data = require("../models/data");  
- 
- 
-module.exports.register = async (req, res, next) => {
-  console.log(req.body);
+const Data = require("../models/data");
+
+
+module.exports.add = async (req, res, next) => {
   try {
-    const newData = new Data({profile:req.body});
-    await newData.save();
-    res.status(200).json(newData); 
+    const data = new Data(req.body);
+    await data.save();
+    res.status(200).json(data);
   } catch (err) {
     next(err);
   }
 };
- 
-module.exports.contact = async (req, res, next) => {
-  console.log(req.body);
+
+module.exports.get = async (req, res, next) => {
   try {
-    const newData = new Contact(req.body);
-    await newData.save();
-    res.status(200).json(newData); 
+    const data = await Data.find();
+    res.status(200).json(data);
   } catch (err) {
     next(err);
   }
 };
- 
+

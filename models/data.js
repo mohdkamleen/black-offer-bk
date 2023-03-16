@@ -1,22 +1,23 @@
-const mongoose = require("mongoose")
-const express = require('express')
-const app = express()
+const mongoose = require("mongoose") 
 
+const DataSchema = new mongoose.Schema({
+    end_year: Number,
+    intensity: Number,
+    sector: String,
+    topic: String,
+    insight: String,
+    url: String,
+    region: String,
+    start_year: Number,
+    impact: String,
+    added: String,
+    published: String,
+    country: String,
+    relevance: Number,
+    pestle: String,
+    source: String,
+    title: String,
+    likelihood: Number
+})
 
-const UserSchema = new mongoose.Schema({ 
-    profile: { 
-        name: String, 
-        email: String,
-        phone: String
-    }, 
-    verified:{
-        type : Boolean,
-        default : false
-    }
-},
-    { 
-        timestamps: true
-    }
-)
-
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Data', DataSchema);
