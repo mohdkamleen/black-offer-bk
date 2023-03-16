@@ -20,3 +20,12 @@ module.exports.get = async (req, res, next) => {
   }
 };
 
+module.exports.getById = async (req, res, next) => {
+  try {
+    const data = await Data.find({_id:req.params.id});
+    res.status(200).json(data);
+  } catch (err) {
+    next(err);
+  }
+};
+
